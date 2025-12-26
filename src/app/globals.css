@@ -1,8 +1,6 @@
  @import "tailwindcss";
 
-
 :root {
-
   --bg-primary: #ffffff;
   --bg-secondary: #fafafa;
   --bg-tertiary: #f5f5f5;
@@ -14,6 +12,16 @@
   --accent-border: #e2e8f0;
   --highlight: #3b82f6;
   --highlight-glow: rgba(59, 130, 246, 0.1);
+
+  --brand-linkedin: #0077b5;
+  --brand-github: #8b5cf6;
+  --brand-whatsapp: #25d366;
+  --brand-email: #e11d48;
+
+  --brand-linkedin-glow: rgba(0, 119, 181, 0.15);
+  --brand-github-glow: rgba(139, 92, 246, 0.15);
+  --brand-whatsapp-glow: rgba(37, 211, 102, 0.15);
+  --brand-email-glow: rgba(225, 29, 72, 0.15);
 }
 
 .dark {

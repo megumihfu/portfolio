@@ -10,29 +10,29 @@ export const ContactSection = () => {
       icon: <TbBrandLinkedinFilled className="w-6 h-6" />,
       label: "LinkedIn",
       href: "https://linkedin.com/in/inès-d-666768231",
-      bgHover: "hover:bg-[var(--highlight-glow)]",
-      textHover: "hover:text-[var(--highlight)]"
+      bgHover: "hover:bg-[var(--brand-linkedin-glow)]", 
+      textHover: "hover:text-[var(--brand-linkedin)]"
     },
     {
       icon: <PiGithubLogoFill className="w-6 h-6" />,
       label: "GitHub",
       href: "https://github.com/megumihfu",
-      bgHover: "hover:bg-[var(--highlight-glow)]",
-      textHover: "hover:text-[var(--highlight)]"
+      bgHover: "hover:bg-[var(--brand-github-glow)]",
+      textHover: "hover:text-[var(--brand-github)]"
     },
     {
       icon: <PiWhatsappLogoFill className="w-6 h-6" />,
       label: "WhatsApp",
       href: "https://wa.me/+33611285128",
-      bgHover: "hover:bg-[var(--highlight-glow)]",
-      textHover: "hover:text-[var(--highlight)]"
+      bgHover: "hover:bg-[var(--brand-whatsapp-glow)]",
+      textHover: "hover:text-[var(--brand-whatsapp)]"
     },
     {
       icon: <HiOutlineMail className="w-6 h-6" />,
       label: "Email",
       href: "mailto:idaffef@gmail.com",
-      bgHover: "hover:bg-[var(--highlight-glow)]",
-      textHover: "hover:text-[var(--highlight)]"
+      bgHover: "hover:bg-[var(--brand-email-glow)]",
+      textHover: "hover:text-[var(--brand-email)]"
     }
   ];
 

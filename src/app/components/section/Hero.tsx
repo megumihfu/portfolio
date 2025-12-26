@@ -43,17 +43,17 @@ export const HeroSection = () => {
         <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:64px_64px]" />
         
         <motion.div
-          className="gradient-orb w-[700px] h-[700px] bg-gradient-to-br from-purple-500/25 via-pink-500/20 to-transparent bottom-[-150px] left-[-150px]"
+          className="gradient-orb w-[700px] h-[700px] bg-gradient-to-br from-[var(--brand-github-glow)] via-[var(--highlight-glow)] to-transparent bottom-[-150px] left-[-150px]"
           animate={{ 
-            scale: [1, 1.3, 1],
+            scale: [1, 1.3, 1], 
             rotate: [0, -90, 0],
           }}
           transition={{ duration: 25, repeat: Infinity, ease: "easeInOut" }}
         />
         <motion.div
-          className="gradient-orb w-[600px] h-[600px] bg-gradient-to-br from-emerald-500/20 to-transparent top-[40%] right-[30%]"
+          className="gradient-orb w-[600px] h-[600px] bg-gradient-to-br from-[var(--brand-whatsapp-glow)] to-transparent top-[40%] right-[30%]"
           animate={{ 
-            scale: [1, 1.15, 1],
+            scale: [1, 1.15, 1], 
             opacity: [0.2, 0.35, 0.2],
           }}
           transition={{ duration: 15, repeat: Infinity, ease: "easeInOut" }}
@@ -113,16 +113,16 @@ export const HeroSection = () => {
               className="flex flex-wrap gap-3 lg:hidden" // hidden on desktop - available on phone
             >
               <div className="glass-card-premium px-4 py-2 rounded-xl border-[var(--accent-border)] flex items-center gap-2">
-                <PiBuildingsBold className="text-blue-500" />
-                <span className="text-xs font-bold">3Y @ Safran</span>
+                <PiBuildingsBold className="text-[var(--brand-linkedin)]" />
+                <span className="text-xs font-bold text-[var(--text-primary)]">3Y @ Safran</span>
               </div>
               <div className="glass-card-premium px-4 py-2 rounded-xl border-[var(--accent-border)] flex items-center gap-2">
-                <SiSpringboot className="text-emerald-500" />
-                <span className="text-xs font-bold">Spring Boot</span>
+                <SiSpringboot className="text-[var(--brand-whatsapp)]" />
+                <span className="text-xs font-bold text-[var(--text-primary)]">Spring Boot</span>
               </div>
               <div className="glass-card-premium px-4 py-2 rounded-xl border-[var(--accent-border)] flex items-center gap-2">
-                <TbBrandKotlin className="text-purple-500" />
-                <span className="text-xs font-bold">Kotlin & KMP</span>
+                <TbBrandKotlin className="text-[var(--brand-github)]" />
+                <span className="text-xs font-bold text-[var(--text-primary)]">Kotlin & KMP</span>
               </div>
             </motion.div>
 
@@ -166,8 +166,8 @@ export const HeroSection = () => {
               className="absolute top-[15%] right-[5%] glass-card-premium p-5 rounded-2xl border-[var(--accent-border)] shadow-xl z-20"
             >
               <div className="flex items-center gap-3">
-                <div className="w-10 h-10 rounded-xl bg-blue-500/10 flex items-center justify-center">
-                  <PiBuildingsBold className="w-5 h-5 text-blue-500" />
+                <div className="w-10 h-10 rounded-xl bg-[var(--brand-linkedin-glow)] flex items-center justify-center">
+                  <PiBuildingsBold className="w-5 h-5 text-[var(--brand-linkedin)]" />
                 </div>
                 <div>
                   <div className="text-sm font-bold text-[var(--text-primary)]">3 Years</div>
@@ -186,8 +186,8 @@ export const HeroSection = () => {
               className="absolute top-[42%] left-[0%] glass-card-premium p-5 rounded-2xl border-[var(--accent-border)] shadow-xl z-20"
             >
               <div className="flex items-center gap-3">
-                <div className="w-10 h-10 rounded-xl bg-emerald-500/10 flex items-center justify-center">
-                  <SiSpringboot className="w-5 h-5 text-emerald-500" />
+                <div className="w-10 h-10 rounded-xl bg-[var(--brand-whatsapp-glow)] flex items-center justify-center">
+                  <SiSpringboot className="w-5 h-5 text-[var(--brand-whatsapp)]" />
                 </div>
                 <div>
                   <div className="text-sm font-bold text-[var(--text-primary)]">Spring Boot</div>
@@ -206,8 +206,8 @@ export const HeroSection = () => {
               className="absolute bottom-[15%] right-[10%] glass-card-premium p-5 rounded-2xl border-[var(--accent-border)] shadow-xl z-20"
             >
               <div className="flex items-center gap-3">
-                <div className="w-10 h-10 rounded-xl bg-purple-500/10 flex items-center justify-center">
-                  <TbBrandKotlin className="w-5 h-5 text-purple-500" />
+                <div className="w-10 h-10 rounded-xl bg-[var(--brand-github-glow)] flex items-center justify-center">
+                  <TbBrandKotlin className="w-5 h-5 text-[var(--brand-github)]" />
                 </div>
                 <div>
                   <div className="text-sm font-bold text-[var(--text-primary)]">Kotlin / KMP</div>
