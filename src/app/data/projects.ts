@@ -1,6 +1,13 @@
+export interface ProjectImage {
+  url: string;
+  caption: string;
+  isArchitecture?: boolean;
+}
+
 export interface Project {
   id?: string;
   title: string;
+  thumbnail: string;
   company: string;
   year: string;
   shortDescription: string;
@@ -10,7 +17,7 @@ export interface Project {
   impact: string;
   architecture: string;
   solution: string[];
-  images: string[];
+  images: ProjectImage[];
   technicalDeepDive?: {
     database?: string;
     realtime?: string;
@@ -34,6 +41,7 @@ export const projects: Project[] = [
   {
     id: "lyjob-inclusive-board",
     title: "Lyjob - Inclusive Job Board",
+    thumbnail: "/project/lyjob/thumb.webp",
     company: "Local Non-Profit Organizations",
     year: "2025",
     shortDescription: "Enterprise-grade mobile marketplace with real-time recruiter validation and multi-role management (admin, recruiter, candidate, guest).",
@@ -50,10 +58,23 @@ export const projects: Project[] = [
       "Guest-mode job application flow with non-personalized fallback"
     ],
     images: [
-      "/project/lyjob/ios-android-interface.webp", 
-      "/project/lyjob/diagram-archi.webp", 
-      "/project/lyjob/supabase.webp", 
-      "/project/lyjob/mail-recovery.webp"
+      { 
+        url: "/project/lyjob/ios-android-interface.webp", 
+        caption: "Unified Cross-Platform UI: iOS and Android sharing 100% of UI logic via Compose Multiplatform for consistent user experience." 
+      },
+      { 
+        url: "/project/lyjob/diagram-archi.webp", 
+        caption: "Architectural Blueprint: MVVM structure featuring KMP module isolation, reactive state management, and native bridges for platform-specific services.", 
+        isArchitecture: true 
+      },
+      { 
+        url: "/project/lyjob/supabase.webp", 
+        caption: "Relational Data Modeling: PostgreSQL schema optimized for multi-role RBAC (admin/recruiter/candidate) with granular Row Level Security (RLS) policies." 
+      },
+      { 
+        url: "/project/lyjob/mail-recovery.webp", 
+        caption: "Identity & Communication Flow: End-to-end authentication system integrating secure transactional emails and automated password recovery workflows." 
+      }
     ],
     technicalDeepDive: {
       database: "PostgreSQL schema optimized for Role-Based Access Control. Integrated Row Level Security (RLS) to ensure recruiters can only manage their own listings, while Admins retain global CRUD permissions over users and statuses.",
@@ -65,6 +86,7 @@ export const projects: Project[] = [
   {
     id: "medical-platform",
     title: "Healthcare Secretary Hub",
+    thumbnail: "/project/ocs/thumb-ocs.webp",
     company: "Freelance",
     year: "2025 - Present",
     shortDescription: "Secure SaaS platform replacing legacy systems for high-volume medical SMS & Email management.",
@@ -80,7 +102,21 @@ export const projects: Project[] = [
       "Deployment of RoundCube on Hetzner VPS for a centralized mail hub",
       "Secure environment variable management and unit testing"
     ],
-    images: ["/project/medical-dashboard.png", "/project/medical-db-schema.png"],
+    images: [
+      {
+        url: "/project/ocs/ocs-dashboard.webp",
+        caption: "Unified Clinical Dashboard: Real-time patient messaging interface with persistent conversation history and secure staff authentication."
+      }, 
+      {
+        url: "/project/ocs/db-diagram.webp",
+        caption: "Relational Message Schema: Custom persistence layer designed to track conversation states, message delivery status, and reusable SMS templates."
+      },
+      { 
+        url: "/project/ocs/archi-ocs.webp", 
+        caption: "High-level overview illustrating secure message orchestration, webhook-driven status updates, and real-time UI synchronization.",
+        isArchitecture: true 
+      }
+    ],
     technicalDeepDive: {
       realtime: "Implemented Webhooks to capture SMS statuses (Sent, Received, Read) instantly, updating the UI via Zustand and Supabase subscriptions for a zero-refresh experience.",
       database: "PostgreSQL schema with Row Level Security (RLS) to ensure that only authenticated medical staff can access patient logs. Used complex queries to generate daily performance reports for the clinic manager.",
@@ -91,6 +127,7 @@ export const projects: Project[] = [
   {
     id: "red-cross-staff-map",
     title: "Red Cross Staff Map",
+    thumbnail: "/project/red-cross/thumb-red-cross.webp",
     company: "French Red Cross (Volunteer)",
     year: "2025 - Present",
     shortDescription: "Internal enterprise platform for real-time personnel mapping and professional contact centralization.",
@@ -105,7 +142,21 @@ export const projects: Project[] = [
       "Decoupled PostgreSQL schema for staff & assistant isolation",
       "Upcoming: Interactive Map integration, Dockerization and automated tests"
     ],
-    images: ["/project/logo.png"], //@todo Postman pic
+    images: [
+      {
+        url: "/project/red-cross/archi-red-cross.webp",
+        caption: "System Architecture: A high-level view of the secure Spring Boot backend, highlighting the dual-authentication strategy and data isolation layer designed for sensitive personnel mapping.",
+        isArchitecture: true 
+      }, 
+      {
+        url: "/project/red-cross/endpoint-test.webp",
+        caption: "Functional API Validation: Demonstrating real-time REST endpoint responses with Postman, featuring advanced filtering for geolocated personnel and standardized JSON data structures."
+      },
+      { 
+        url: "/project/red-cross/security-conf.webp", 
+        caption: "Security-First Implementation: A look at the Spring Security configuration, showing explicit request matching and the strict isolation between public search routes and protected staff areas."
+      }
+    ],
     technicalDeepDive: {
       database: "Engineered a decoupled data model using PostgreSQL. By strictly isolating Family Assistants and Administrative Staff entities, data integrity is ensured and the system is prepared for scalable role-based access control (RBAC).",
       security: "Implementing a strict access policy: Family Assistants have read-only access verified against a professional email whitelist, while management staff holds CRUD permissions via JWT-backed authentication.",
