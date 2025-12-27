@@ -44,7 +44,7 @@ export const projects: Project[] = [
     thumbnail: "/project/lyjob/thumb.webp",
     company: "Local Non-Profit Organizations",
     year: "2025",
-    shortDescription: "Enterprise-grade mobile marketplace with real-time recruiter validation and multi-role management (admin, recruiter, candidate, guest).",
+    shortDescription: "Inclusive recruitment cross-platform app featuring real-time workflows and multi-role RBAC.",
     fullDescription: "Lyjob is a cross-platform professional networking app designed for French/Belgium associations. It features a complete ecosystem for job seekers and recruiters, currently in the final UAT (User Acceptance Testing) phase for Apple Store and Play Store release.",
     stack: ["Kotlin Multiplatform", "Supabase", "PostgreSQL", "Ktor", "FCM", "Brevo"],
     challenge: "Architecting a multi-role system where recruiters must undergo admin validation before accessing posting privileges, while maintaining a seamless 'Guest' experience.",
@@ -77,10 +77,10 @@ export const projects: Project[] = [
       }
     ],
     technicalDeepDive: {
-      database: "PostgreSQL schema optimized for Role-Based Access Control. Integrated Row Level Security (RLS) to ensure recruiters can only manage their own listings, while Admins retain global CRUD permissions over users and statuses.",
-      realtime: "Leveraged Supabase Realtime to push instant notifications for recruiter validation and new job matches. Used FCM for background push notifications with a unified KMP interface for iOS/Android handles.",
+      database: "PostgreSQL schema optimized for Role-Based Access Control. Integrated Row Level Security (RLS) to ensure recruiters can only manage their own listings, while Admins retain global CRUD permissions over users.",
+      realtime: "Leveraged Supabase Realtime to push instant notifications for recruiter validation. Used FCM for background push notifications with a unified KMP interface for iOS/Android handles.",
       security: "Built a robust authentication flow including secure password recovery via recovery tokens and transactional emails configured through Brevo SMTP.",
-      ux: "Implemented a hybrid onboarding: registered users get personalized recommendations based on location and interests, while a Guest mode allows high-conversion applications through a simplified form."
+      ux: "Implemented a hybrid onboarding: registered users get personalized recommendations based on location and interests, while a Guest mode allows applications through a simplified form."
     }
   },
   {
@@ -134,7 +134,7 @@ export const projects: Project[] = [
     fullDescription: "Currently developing a fullstack solution to streamline communication between Family Assistants (AF) within a Red Cross establishment. The platform centralizes contact data and professional locations onto an interactive map, replacing manual processes with a secure, searchable digital hub.",
     stack: ["Spring Boot 3", "Java 17", "PostgreSQL", "Angular", "Docker", "GitHub Actions"],
     challenge: "Designing a robust data isolation strategy and a whitelist-based access system to ensure sensitive professional data is only accessible to verified personnel.",
-    impact: "Digitalizing staff directories for 100+ members, aiming to reduce internal search time by 50% through advanced filtering and geolocation.",
+    impact: "Digitalizing staff directories for 100+ members, aiming to reduce internal search time through advanced filtering and geolocation.",
     architecture: "Building a modular monolith with a clean separation of concerns. The backend follows a Layered Architecture (Controller-Service-Repository) secured by custom domain-validation filters in Spring Security. The project prioritizes high-availability and clean API contracts via the DTO pattern.",
     solution: [
       "Secure REST API with Spring Boot & Java 17",
