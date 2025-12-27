@@ -171,7 +171,7 @@ export const HeroSection = () => {
                 </div>
                 <div>
                   <div className="text-sm font-bold text-[var(--text-primary)]">3 Years</div>
-                  <div className="text-[10px] text-[var(--text-secondary)] uppercase tracking-wider">@ Safran Electronics</div>
+                  <div className="text-[10px] text-[var(--text-secondary)] uppercase tracking-wider">@Safran Electronics & Defense</div>
                 </div>
               </div>
             </motion.div>
@@ -210,7 +210,7 @@ export const HeroSection = () => {
                   <TbBrandKotlin className="w-5 h-5 text-[var(--brand-github)]" />
                 </div>
                 <div>
-                  <div className="text-sm font-bold text-[var(--text-primary)]">Kotlin / KMP</div>
+                  <div className="text-sm font-bold text-[var(--text-primary)]">Kotlin & KMP</div>
                   <div className="text-[10px] text-[var(--text-secondary)] uppercase tracking-wider">Mobile Engine</div>
                 </div>
               </div>
