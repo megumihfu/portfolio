@@ -35,21 +35,26 @@ export const projects: Project[] = [
     id: "lyjob-inclusive-board",
     title: "Lyjob - Inclusive Job Board",
     company: "Local Non-Profit Organizations",
-    year: "2024 - 2025",
-    shortDescription: "Enterprise-grade mobile marketplace with real-time recruiter validation and multi-role management (Admin, Recruiter, Candidate, Guest).",
-    fullDescription: "Lyjob is a cross-platform professional networking app designed for French and Belgian associations. It features a complete ecosystem for job seekers and recruiters, currently in the final UAT (User Acceptance Testing) phase for App Store and Play Store release.",
-    stack: ["Kotlin Multiplatform", "Compose Multiplatform", "Supabase", "PostgreSQL", "Ktor", "FCM", "Brevo"],
+    year: "2025",
+    shortDescription: "Enterprise-grade mobile marketplace with real-time recruiter validation and multi-role management (admin, recruiter, candidate, guest).",
+    fullDescription: "Lyjob is a cross-platform professional networking app designed for French/Belgium associations. It features a complete ecosystem for job seekers and recruiters, currently in the final UAT (User Acceptance Testing) phase for Apple Store and Play Store release.",
+    stack: ["Kotlin Multiplatform", "Supabase", "PostgreSQL", "Ktor", "FCM", "Brevo"],
     challenge: "Architecting a multi-role system where recruiters must undergo admin validation before accessing posting privileges, while maintaining a seamless 'Guest' experience.",
     impact: "Digitalized the inclusive hiring process for different associations. Achieved ~85% business logic sharing while integrating complex third-party services like FCM and Brevo SMTP.",
-    architecture: "Clean Architecture (MVVM) leveraging KMP shared modules for 100% of the domain logic. Implemented a reactive UI with Compose Multiplatform and a real-time backend synchronization using Supabase Realtime for instant status updates.",
+    architecture: "MVVM Architecture leveraging KMP shared modules for the domain logic. Reactive UI with Compose Multiplatform and a real-time backend synchronization using Supabase Realtime & Edge Functions for instant status updates and notifications.",
     solution: [
-      "Multi-role RBAC system (Admin, Recruiter, Candidate, Guest)",
+      "Multi-role RBAC system (admin, recruiter, candidate, guest)",
       "Real-time recruiter validation workflow with instant UI updates",
       "Cross-platform Push Notifications using FCM & KMP libraries",
       "Secure Password Recovery with Supabase Auth & Brevo SMTP integration",
       "Guest-mode job application flow with non-personalized fallback"
     ],
-    images: ["/project/lyjob-db-schema.png", "/project/lyjob-ui.png"],
+    images: [
+      "/project/lyjob/ios-android-interface.webp", 
+      "/project/lyjob/diagram-archi.webp", 
+      "/project/lyjob/supabase.webp", 
+      "/project/lyjob/mail-recovery.webp"
+    ],
     technicalDeepDive: {
       database: "PostgreSQL schema optimized for Role-Based Access Control. Integrated Row Level Security (RLS) to ensure recruiters can only manage their own listings, while Admins retain global CRUD permissions over users and statuses.",
       realtime: "Leveraged Supabase Realtime to push instant notifications for recruiter validation and new job matches. Used FCM for background push notifications with a unified KMP interface for iOS/Android handles.",
@@ -61,13 +66,13 @@ export const projects: Project[] = [
     id: "medical-platform",
     title: "Healthcare Secretary Hub",
     company: "Freelance",
-    year: "2025",
+    year: "2025 - Present",
     shortDescription: "Secure SaaS platform replacing legacy systems for high-volume medical SMS & Email management.",
     fullDescription: "Developed a custom communication dashboard for a medical clinic to replace an unstable legacy tool. The platform handles real-time patient messaging, appointment follow-ups, and features a centralized email interface, significantly reducing administrative overhead.",
     stack: ["Next.js", "Supabase", "Zustand", "PostgreSQL", "Webhooks", "VPS"],
     challenge: "Migrating from a crashing legacy system to a modern architecture while ensuring real-time delivery tracking and strict data privacy for medical follow-ups.",
     impact: "Reduced phone call volume by 30% through automated follow-ups. Improved team accountability with multi-user audit logs for every message sent.",
-    architecture: "Modern Serverless architecture using Next.js deployed on Vercel. Leveraging Supabase for real-time data persistence and PostgreSQL RLS for data isolation. Integrated a custom open-source webmail solution on a dedicated Hetzner VPS.",
+    architecture: "Modern Serverless architecture using Next.js deployed on Vercel. Leveraging Supabase for real-time data persistence and RLS for data isolation. Integrated a custom open-source webmail solution on a dedicated Hetzner VPS.",
     solution: [
       "Professional SMS API integration with real-time Webhook tracking",
       "Dynamic SMS templates with character-limit optimization to control costs",
@@ -87,10 +92,10 @@ export const projects: Project[] = [
     id: "red-cross-staff-map",
     title: "Red Cross Staff Map",
     company: "French Red Cross (Volunteer)",
-    year: "Dec 2025 - Present",
+    year: "2025 - Present",
     shortDescription: "Internal enterprise platform for real-time personnel mapping and professional contact centralization.",
     fullDescription: "Currently developing a fullstack solution to streamline communication between Family Assistants (AF) within a Red Cross establishment. The platform centralizes contact data and professional locations onto an interactive map, replacing manual processes with a secure, searchable digital hub.",
-    stack: ["Spring Boot 3", "Java 17", "Spring Security", "PostgreSQL", "Angular", "Docker"],
+    stack: ["Spring Boot 3", "Java 17", "PostgreSQL", "Angular", "Docker", "GitHub Actions"],
     challenge: "Designing a robust data isolation strategy and a whitelist-based access system to ensure sensitive professional data is only accessible to verified personnel.",
     impact: "Digitalizing staff directories for 100+ members, aiming to reduce internal search time by 50% through advanced filtering and geolocation.",
     architecture: "Building a modular monolith with a clean separation of concerns. The backend follows a Layered Architecture (Controller-Service-Repository) secured by custom domain-validation filters in Spring Security. The project prioritizes high-availability and clean API contracts via the DTO pattern.",
@@ -102,11 +107,11 @@ export const projects: Project[] = [
     ],
     images: ["/project/logo.png"], //@todo Postman pic
     technicalDeepDive: {
-      database: "Engineered a decoupled data model using PostgreSQL. By strictly isolating Family Assistants and Administrative Staff entities, I ensured data integrity and prepared the system for scalable role-based access control (RBAC).",
-      security: "Implementing a strict access policy: Family Assistants have read-only access verified against a professional email whitelist, while management staff holds full CRUD permissions via JWT-backed authentication.",
-      backend: "Standardizing data exchange using DTO (Data Transfer Objects) patterns and MapStruct to decouple the persistence layer from the API layer, ensuring long-term maintainability and secure data exposure.",
+      database: "Engineered a decoupled data model using PostgreSQL. By strictly isolating Family Assistants and Administrative Staff entities, data integrity is ensured and the system is prepared for scalable role-based access control (RBAC).",
+      security: "Implementing a strict access policy: Family Assistants have read-only access verified against a professional email whitelist, while management staff holds CRUD permissions via JWT-backed authentication.",
+      backend: "Standardizing data exchange using DTO (Data Transfer Objects) patterns to decouple the persistence layer from the API layer, ensuring long-term maintainability and secure data exposure.",
       devops: "Preparing a CI/CD workflow using GitHub Actions to automate JUnit/Mockito testing and Docker image builds upon every push to ensure industrial-grade deployment standards."
     },
-    githubUrl: "https://github.com/megumihfu/croix-rouge-webapp",
+    githubUrl: "https://github.com/megumihfu/red-cross-webapp",
   }
 ];
