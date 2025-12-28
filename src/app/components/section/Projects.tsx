@@ -11,6 +11,8 @@ import { projects, Project } from '../../data/projects'
 export const ProjectsSection = () => {
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
   const [activeTab, setActiveTab] = useState('overview');
+  const [zoomedImage, setZoomedImage] = useState<string | null>(null);
+  const archiImage = selectedProject?.images.find(img => img.isArchitecture);
 
   // no scroll when modal open
   useEffect(() => {
@@ -47,7 +49,11 @@ export const ProjectsSection = () => {
                 <div className="relative z-10 h-full flex flex-col">
                   {/* image preview */}
                   <div className="relative aspect-video rounded-2xl mb-6 overflow-hidden border border-[var(--accent-border)]">
-                    <img src={project.images[0]} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" alt={project.title} />
+                    <img 
+                      src={project.thumbnail}
+                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" 
+                      alt={project.title} 
+                    />
                   </div>
 
                   {/* card header */}
@@ -161,7 +167,7 @@ export const ProjectsSection = () => {
                           <div className="flex gap-8 items-start">
                             <div className="w-1.5 h-24 md:h-32 bg-[var(--highlight)] rounded-full flex-shrink-0 mt-2"></div>
                             <div className="space-y-4">
-                              <h3 className="text-4xl md:text-6xl font-bold font-[family-name:var(--font-outfit)] text-[var(--text-primary)] tracking-tight">Project Insight</h3>
+                              <h3 className="text-4xl md:text-6xl font-bold font-[family-name:var(--font-outfit)] text-[var(--text-primary)] tracking-tight">Project Context</h3>
                               <p className="text-lg md:text-xl text-[var(--text-secondary)] leading-relaxed max-w-4xl font-normal">{selectedProject.fullDescription}</p>
                             </div>
                           </div>
@@ -245,29 +251,49 @@ export const ProjectsSection = () => {
                             </div>
                           </div>
                           
-                          <div className="bg-[var(--bg-tertiary)] rounded-[3rem] border-2 border-dashed border-[var(--accent-border)] p-12 flex flex-col items-center justify-center text-center self-start sticky top-0 min-h-[450px]">
-                             <PiStackBold size={48} className="text-[var(--highlight)]/10 mb-4" />
-                             <p className="text-[var(--text-tertiary)] font-bold uppercase tracking-widest text-[10px]">Technical Blueprint Visualization</p>
+                          <div className="sticky top-0 self-start">
+                            {archiImage ? (
+                              <div
+                                onClick={() => setZoomedImage(archiImage.url)} 
+                                className="space-y-4"
+                                >
+                                <div className="rounded-[2.5rem] overflow-hidden border border-[var(--accent-border)] shadow-2xl bg-[var(--bg-secondary)]">
+                                  <img src={archiImage.url} alt="Technical Architecture" className="w-full h-auto" />
+                                </div>
+                                <p className="text-center text-[10px] font-black uppercase tracking-widest text-[var(--text-tertiary)]">
+                                  {archiImage.caption}
+                                </p>
+                              </div>
+                            ) : (
+                              <div className="bg-[var(--bg-tertiary)] rounded-[3rem] border-2 border-dashed border-[var(--accent-border)] p-12 flex flex-col items-center justify-center text-center min-h-[450px]">
+                                <PiStackBold size={48} className="text-[var(--highlight)]/10 mb-4" />
+                                <p className="text-[var(--text-tertiary)] font-bold uppercase tracking-widest text-[10px]">Architecture Diagram coming soon</p>
+                              </div>
+                            )}
                           </div>
                         </div>
                       )}
 
                       {activeTab === 'gallery' && (
-                        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div className="columns-1 md:columns-2 gap-6 space-y-6">
                           {selectedProject.images.map((img, i) => (
                             <motion.div 
                               key={i} 
-                              whileHover={{ scale: 1.02, y: -5 }}
-                              className="rounded-[2rem] overflow-hidden border border-[var(--accent-border)] bg-[var(--bg-secondary)] shadow-lg"
+                              onClick={() => setZoomedImage(img.url)}
+                              className="break-inside-avoid rounded-[2rem] overflow-hidden border border-[var(--accent-border)] bg-[var(--bg-secondary)] group relative cursor-pointer"
                             >
                               <img 
-                                src={img} 
-                                className="w-full h-auto transition-transform duration-700 group-hover:scale-105" 
-                                alt={`Gallery item ${i}`} 
-                                onError={(e) => { 
-                                  (e.target as HTMLImageElement).src = "/project/logo.png";
-                                }}
+                                src={img.url} 
+                                className="w-full h-auto block" 
+                                alt={img.caption} 
                               />
+                              
+                              {/* caption */}
+                              <div className="absolute inset-0 bg-gradient-to-t from-[var(--bg-primary)] via-[var(--bg-primary)]/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-8">
+                                <p className="text-[var(--text-primary)] text-xs font-medium leading-relaxed">
+                                  {img.caption}
+                                </p>
+                              </div>
                             </motion.div>
                           ))}
                         </div>
@@ -279,6 +305,35 @@ export const ProjectsSection = () => {
             </motion.div>
           )}
         </AnimatePresence>
+
+        {/* zoom pic */}
+        <AnimatePresence>
+          {zoomedImage && (
+            <motion.div 
+              initial={{ opacity: 0 }} 
+              animate={{ opacity: 1 }} 
+              exit={{ opacity: 0 }}
+              onClick={() => setZoomedImage(null)}
+              className="fixed inset-0 z-[110] bg-[var(--bg-primary)]/90 backdrop-blur-2xl flex items-center justify-center p-4 cursor-zoom-out"
+            >
+              <motion.img 
+                initial={{ scale: 0.9, opacity: 0 }}
+                animate={{ scale: 1, opacity: 1 }}
+                exit={{ scale: 0.9, opacity: 0 }}
+                src={zoomedImage} 
+                className="max-w-full max-h-[90vh] rounded-2xl shadow-2xl object-contain border border-[var(--accent-border)]"
+              />
+              
+              <button 
+                onClick={() => setZoomedImage(null)}
+                className="absolute top-8 right-8 text-[var(--text-tertiary)] hover:text-[var(--text-primary)] transition-colors p-2"
+              >
+                <PiXBold size={32} />
+              </button>
+            </motion.div>
+          )}
+        </AnimatePresence>
+
       </div>
     </section>
   );

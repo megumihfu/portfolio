@@ -100,10 +100,9 @@ export const HeroSection = () => {
               transition={{ delay: 0.5 }}
               className="text-xl md:text-2xl text-[var(--text-secondary)] leading-relaxed max-w-2xl"
             >
-              Software engineer driven by <span className="italic font-normal text-[var(--text-primary)]">real-world impact </span>
-              and <span className="italic font-normal text-[var(--text-primary)]">international ambition</span>.
-              Focusing on building tools with a <span className="italic font-normal text-[var(--text-primary)]">meaningful purpose</span>,
-              always looking to contribute to projects that truly matter.
+              Software engineer <span className="italic font-normal text-[var(--text-primary)]">building tech that matters</span>. 
+              From social impact to <span className="italic font-normal text-[var(--text-primary)]">large-scale systems</span>, 
+              I'm proactive, curious, and ready for my next <span className="italic font-normal text-[var(--text-primary)]">international challenge</span>.
             </motion.p>
 
             <motion.div 
