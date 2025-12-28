@@ -162,7 +162,6 @@ export const projects: Project[] = [
       security: "Implementing a strict access policy: Family Assistants have read-only access verified against a professional email whitelist, while management staff holds CRUD permissions via JWT-backed authentication.",
       backend: "Standardizing data exchange using DTO (Data Transfer Objects) patterns to decouple the persistence layer from the API layer, ensuring long-term maintainability and secure data exposure.",
       devops: "Preparing a CI/CD workflow using GitHub Actions to automate JUnit/Mockito testing and Docker image builds upon every push to ensure industrial-grade deployment standards."
-    },
-    githubUrl: "https://github.com/megumihfu/red-cross-webapp",
+    }
   }
 ];
