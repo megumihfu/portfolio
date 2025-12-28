@@ -15,7 +15,7 @@ A _nice_ **responsive** portfolio developed with the React and Next.js ecosystem
 
 * **Hero Section**: Personal branding featuring professional and soft skills core values.
 * **Project Deep Dives**: Detailed case studies showcasing technical architecture, functional proofs, and system blueprints.
-* **Technical Stack**: A comprehensive overview of core competencies including backend, mobile, and frontend _(pretty much an artist, huh?)_. 
+* **Technical Stack**: A comprehensive overview of core competencies including backend, mobile, and frontend. 
 * **Contact & Socials**: Integrated access to professional networks and direct communication channels.
 
 ## Live Demo
