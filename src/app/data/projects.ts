@@ -34,7 +34,7 @@ export const projects: Project[] = [
   {
     id: "lyjob-inclusive-board",
     title: "Lyjob - Inclusive Job Board",
-    company: "Local Non-Profit Organizations",
+    company: "Freelance",
     year: "2025",
     shortDescription: "Enterprise-grade mobile marketplace with real-time recruiter validation and multi-role management (admin, recruiter, candidate, guest).",
     fullDescription: "Lyjob is a cross-platform professional networking app designed for French/Belgium associations. It features a complete ecosystem for job seekers and recruiters, currently in the final UAT (User Acceptance Testing) phase for Apple Store and Play Store release.",
