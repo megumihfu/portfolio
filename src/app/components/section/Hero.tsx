@@ -101,7 +101,7 @@ export const HeroSection = () => {
               className="text-xl md:text-2xl text-[var(--text-secondary)] leading-relaxed max-w-2xl"
             >
               Software engineer <span className="italic font-normal text-[var(--text-primary)]">building tech that matters</span>. 
-              From social impact to <span className="italic font-normal text-[var(--text-primary)]">large-scale systems</span>, 
+              From scalable backend systems to <span className="italic font-normal text-[var(--text-primary)]">cloud integration</span>, 
               I'm proactive, curious, and ready for my next <span className="italic font-normal text-[var(--text-primary)]">international challenge</span>.
             </motion.p>
 
