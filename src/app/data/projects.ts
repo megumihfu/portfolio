@@ -163,5 +163,56 @@ export const projects: Project[] = [
       backend: "Standardizing data exchange using DTO (Data Transfer Objects) patterns to decouple the persistence layer from the API layer, ensuring long-term maintainability and secure data exposure.",
       devops: "Preparing a CI/CD workflow using GitHub Actions to automate JUnit/Mockito testing and Docker image builds upon every push to ensure industrial-grade deployment standards."
     }
+  }, 
+  {
+    id: "solidarity-aid-platform",
+    title: "Solidarity App",
+    thumbnail: "/project/solidarity-app/thumb.webp",
+    company: "Personal Project",
+    year: "2026",
+    shortDescription:"Mobile-first fullstack web platform providing a public directory of local social aid resources with authenticated content management.",
+    fullDescription:"Solidarity Aid Platform is a fullstack web application designed to help homeless people quickly discover local social aid resources such as food distribution points, shelters, hygiene services, and essential information. The platform prioritizes accessibility, mobile usability, and fast discovery, while enabling authenticated users to manage associations and informational content through a structured CRUD interface.",
+    stack: ["Spring Boot 3","Java 17","PostgreSQL","React","Vite","TailwindCSS","Docker","Swagger/OpenAPI"],
+    challenge:"Designing a clean MVP architecture that balances public accessibility with controlled data management, while supporting scalable search capabilities and a mobile-first user experience.",
+    impact:"Delivered a functional, mobile-friendly MVP featuring a public resource directory, authenticated content management, and a fully documented REST API within a reproducible Docker environment.",
+    architecture: "Dockerized layered monolith architecture. The backend follows a Controller-Service-Repository pattern with DTO-based API contracts. The frontend is a mobile-first React application consuming the REST API via a centralized HTTP client. Frontend and backend are fully decoupled and communicate exclusively through JSON over REST.",
+    solution: [
+      "Public directory of social aid resources with multi-criteria filtering (city, category tags, associations)",
+      "Future integration with external French communes API to retrieve geographic coordinates",
+      "Future map-based visualization of aid resources using geolocation data",
+      "Mobile-first responsive UI optimized for quick and emergency access",
+      "Authenticated CRUD operations for associations and informational content",
+      "Docker Compose orchestration for backend, frontend, and database",
+      "Interactive OpenAPI/Swagger documentation for API exploration"
+    ],
+    images: [
+      {
+        url: "/project/solidarity-app/main-interface.webp",
+        caption: "Authenticated content management: interface enabling logged-in users to create, edit, and maintain associations and informational resources"
+      },
+      {
+        url: "/project/solidarity-app/solidarity-db.webp",
+        caption: "Relational architecture designed for the Solidarity MVP, focusing on clear separation between public resources, informational content, and secure user management"
+      },
+      {
+        url: "/project/solidarity-app/solidarity-app-diagram.webp",
+        caption: "System Architecture: dockerized setup illustrating the separation between the React frontend, Spring Boot REST API, and PostgreSQL database",
+        isArchitecture: true
+      }
+    ],
+
+    technicalDeepDive: {
+      backend: "Implemented a REST API using Spring Boot with DTO-based contracts. The backend will integrates an external French communes API to enrich resources with geographic coordinates, enabling map-based visualization and future spatial features.",      
+      database: "Designed a relational PostgreSQL schema optimized for tag-based filtering and association queries, initialized via automated SQL seed scripts.",
+      security: "Current MVP relies on frontend-level access control. Planned upgrade includes JWT-based authentication and role enforcement using Spring Security.",
+      infrastructure: "Built a multi-container Docker environment using Docker Compose, ensuring reproducible local development and a clear migration path to AWS.",
+      ux: "Adopted a mobile-first approach with responsive layouts to ensure usability in low-attention or emergency contexts."
+    },
+    releaseStrategy: {
+      status: "MVP Delivered – Active Development",
+      testing:   "Implemented basic unit tests using JUnit and Mockito to validate core service logic and demonstrate test-driven practices",
+      storeCompliance: "Web Platform – AWS deployment planned with external API integrations"
+    },
+    githubUrl: "https://github.com/megumihfu/solidarity-app"
   }
 ];

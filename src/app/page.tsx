@@ -26,7 +26,7 @@ export default function Home() {
         <footer className="py-12 border-t border-neutral-200 dark:border-neutral-800">
           <div className="container-custom text-center">
             <p className="text-sm text-neutral-500 dark:text-neutral-400">
-              © 2025 Ines D • Built with Next.js & Framer Motion
+              © 2026 Ines D • Built with Next.js & Framer Motion
             </p>
           </div>
         </footer>

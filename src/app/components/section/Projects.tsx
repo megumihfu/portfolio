@@ -36,11 +36,11 @@ export const ProjectsSection = () => {
           </p>
         </div>
         
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 mb-12">
           {projects.map((project, index) => (
             <TiltCard key={index} className="h-full">
               <motion.div 
-                className="relative p-7 rounded-[2rem] h-full flex flex-col cursor-pointer group bg-[var(--bg-secondary)] border border-[var(--accent-border)] overflow-hidden hover:border-[var(--highlight)]/40 transition-all duration-500 shadow-sm"
+                className="relative p-8 rounded-[2rem] h-full flex flex-col cursor-pointer group bg-[var(--bg-secondary)] border border-[var(--accent-border)] overflow-hidden hover:border-[var(--highlight)]/40 transition-all duration-500 shadow-sm"
                 onClick={() => {
                     setSelectedProject(project);
                     setActiveTab('overview');
