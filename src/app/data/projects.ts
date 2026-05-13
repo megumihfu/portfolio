@@ -165,54 +165,49 @@ export const projects: Project[] = [
     }
   }, 
   {
-    id: "solidarity-aid-platform",
-    title: "Solidarity App",
-    thumbnail: "/project/solidarity-app/thumb.webp",
+    id: "ai-job-search-agent",
+    title: "AI-Powered Job Search Agent",
+    thumbnail: "/project/job-search-agent/thumb.webp",
     company: "Personal Project",
     year: "2026",
-    shortDescription:"Mobile-first fullstack web platform providing a public directory of local social aid resources with authenticated content management.",
-    fullDescription:"Solidarity Aid Platform is a fullstack web application designed to help homeless people quickly discover local social aid resources such as food distribution points, shelters, hygiene services, and essential information. The platform prioritizes accessibility, mobile usability, and fast discovery, while enabling authenticated users to manage associations and informational content through a structured CRUD interface.",
-    stack: ["Spring Boot 3","Java 17","PostgreSQL","React","Vite","TailwindCSS","Docker","Swagger/OpenAPI"],
-    challenge:"Designing a clean MVP architecture that balances public accessibility with controlled data management, while supporting scalable search capabilities and a mobile-first user experience.",
-    impact:"Delivered a functional, mobile-friendly MVP featuring a public resource directory, authenticated content management, and a fully documented REST API within a reproducible Docker environment.",
-    architecture: "Dockerized layered monolith architecture. The backend follows a Controller-Service-Repository pattern with DTO-based API contracts. The frontend is a mobile-first React application consuming the REST API via a centralized HTTP client. Frontend and backend are fully decoupled and communicate exclusively through JSON over REST.",
+    shortDescription: "Automated job hunting agent using LLMs to filter DevOps and Backend roles across EU markets.",
+    fullDescription: "An intelligent automation tool designed to bridge the gap between massive job boards and specific career criteria. It scrapes, analyzes, and filters job offers in France and Germany using GPT-4o-mini, delivering a ready-to-use professional lead sheet.",
+    stack: ["Python 3", "OpenAI / GPT-4o-mini", "GitHub Actions", "Openpyxl", "Pandas", "Pytest"],
+    challenge: "Reducing the high cost (tokens used) of multi-agent orchestration (CrewAI) while maintaining high-precision filtering for complex technical requirements.",
+    impact: "Achieved a 60% reduction in token consumption and faster execution by refactoring from a multi-agent system to a streamlined custom Python pipeline.",
+    architecture: "Modular 'tool-based' architecture. Uses a sequential pipeline: data acquisition (LinkedIn API) -> Semantic analysis (LLM Screening) -> Formatted export (Excel with conditional formatting).",
     solution: [
-      "Public directory of social aid resources with multi-criteria filtering (city, category tags, associations)",
-      "Future integration with external French communes API to retrieve geographic coordinates",
-      "Future map-based visualization of aid resources using geolocation data",
-      "Mobile-first responsive UI optimized for quick and emergency access",
-      "Authenticated CRUD operations for associations and informational content",
-      "Docker Compose orchestration for backend, frontend, and database",
-      "Interactive OpenAPI/Swagger documentation for API exploration"
+      "Custom Python automation loop replacing heavy agentic frameworks",
+      "Multi-market scraping logic for France and Germany",
+      "AI-driven screening for experience, salary, and tech-stack matching",
+      "Automated CI/CD pipeline with GitHub Actions",
+      "Advanced Excel generation with status dropdowns and dynamic styling"
     ],
     images: [
       {
-        url: "/project/solidarity-app/main-interface.webp",
-        caption: "Authenticated content management: interface enabling logged-in users to create, edit, and maintain associations and informational resources"
-      },
-      {
-        url: "/project/solidarity-app/solidarity-db.webp",
-        caption: "Relational architecture designed for the Solidarity MVP, focusing on clear separation between public resources, informational content, and secure user management"
-      },
-      {
-        url: "/project/solidarity-app/solidarity-app-diagram.webp",
-        caption: "System Architecture: dockerized setup illustrating the separation between the React frontend, Spring Boot REST API, and PostgreSQL database",
+        url: "/project/job-search-agent/diagram-job-agent.webp",
+        caption: "Optimization flow: transition from expensive CrewAI orchestration to a streamlined, cost-effective Python-native pipeline.",
         isArchitecture: true
+      },
+      {
+        url: "/project/job-search-agent/agent-logs.webp",
+        caption: "Automated lead generation: styled Excel report with AI-calculated valid jobs and interactive status menus."
+      },
+      {
+        url: "/project/job-search-agent/excel-file.webp",
+        caption: "Real-time execution logs showing the LLM-driven filtering process: The system intelligently rejects roles based on specific criteria."
+      },
+      {
+        url: "/project/job-search-agent/pipelines.webp",
+        caption: "Industrial quality standards: CI/CD workflow executing automated unit tests on every push to ensure agent reliability."
       }
     ],
-
     technicalDeepDive: {
-      backend: "Implemented a REST API using Spring Boot with DTO-based contracts. The backend will integrates an external French communes API to enrich resources with geographic coordinates, enabling map-based visualization and future spatial features.",      
-      database: "Designed a relational PostgreSQL schema optimized for tag-based filtering and association queries, initialized via automated SQL seed scripts.",
-      security: "Current MVP relies on frontend-level access control. Planned upgrade includes JWT-based authentication and role enforcement using Spring Security.",
-      infrastructure: "Built a multi-container Docker environment using Docker Compose, ensuring reproducible local development and a clear migration path to AWS.",
-      ux: "Adopted a mobile-first approach with responsive layouts to ensure usability in low-attention or emergency contexts."
+      optimization: "Refactored the core logic from CrewAI to a custom loop. By engineering a single, dense system prompt for the LLM instead of multiple agent interactions, I drastically cut down on API tokens while implementing robust data cleaning to handle inconsistent job board schemas (N/A values, empty descriptions).",
+      devops: "Implemented a full CI/CD lifecycle using GitHub Actions. The agent is protected by a suite of Pytest unit tests that mock API responses to ensure the filtering logic remains robust as job board structures change.",
+      infrastructure: "Architecture follows the 'tool pattern', decoupling the data source (LinkedIn) from the brain (GPT-4o) and the output (Excel). This allows for swapping the LLM or adding new job boards without rewriting the core agent.",
+      backend: "Advanced error handling and rate-limiting management to handle API constraints while maintaining a high throughput of job offer analysis."
     },
-    releaseStrategy: {
-      status: "MVP Delivered – Active Development",
-      testing:   "Implemented basic unit tests using JUnit and Mockito to validate core service logic and demonstrate test-driven practices",
-      storeCompliance: "Web Platform – AWS deployment planned with external API integrations"
-    },
-    githubUrl: "https://github.com/megumihfu/solidarity-app"
+    githubUrl: "https://github.com/megumihfu/job-search-agent"
   }
 ];
