@@ -125,45 +125,72 @@ export const projects: Project[] = [
     }
   },
   {
-    id: "red-cross-staff-map",
-    title: "Red Cross Staff Map",
-    thumbnail: "/project/red-cross/thumb-red-cross.webp",
-    company: "French Red Cross (Volunteer)",
-    year: "2025 - Present",
-    shortDescription: "Internal enterprise platform for real-time personnel mapping and professional contact centralization.",
-    fullDescription: "Currently developing a fullstack solution to streamline communication between Family Assistants (AF) within a Red Cross establishment. The platform centralizes contact data and professional locations onto an interactive map, replacing manual processes with a secure, searchable digital hub.",
-    stack: ["Spring Boot 3", "Java 17", "PostgreSQL", "Angular", "Docker", "GitHub Actions"],
-    challenge: "Designing a robust data isolation strategy and a whitelist-based access system to ensure sensitive professional data is only accessible to verified personnel.",
-    impact: "Digitalizing staff directories for 100+ members, aiming to reduce internal search time through advanced filtering and geolocation.",
-    architecture: "Building a modular monolith with a clean separation of concerns. The backend follows a Layered Architecture (Controller-Service-Repository) secured by custom domain-validation filters in Spring Security. The project prioritizes high-availability and clean API contracts via the DTO pattern.",
+    id: "solidarity-aid-platform",
+    title: "Solidarity App",
+    thumbnail: "/project/solidarity-app/thumb.webp",
+    company: "Personal Project",
+    year: "2026",
+    shortDescription: "Containerized fullstack social platform orchestrated with local Kubernetes (Minikube) and automated via GitHub Actions.",
+    fullDescription: "Solidarity App is a fullstack web application designed to help vulnerable populations locate social aid resources. While delivering a clean, mobile-first functional MVP, this project primarily serves as a DevOps laboratory. It demonstrates a complete pipeline from multi-stage containerization to local Kubernetes orchestration, configuration handling via native K8s Secrets, and automated CI integration, with a structured roadmap for cloud-native AWS deployment.",
+    stack: [
+      "Spring Boot 3",
+      "Java 17",
+      "PostgreSQL",
+      "React",
+      "Docker",
+      "Kubernetes",
+      "Minikube",
+      "GitHub Actions",
+      "AWS",
+      "Terraform",
+      "Ansible"
+    ],
+    challenge: "Evolving a standard multi-container Docker Compose application into a locally orchestrated Kubernetes cluster, implementing secure environment injection, and designing an enterprise-grade CI/CD and cloud migration path.",
+    impact: "Delivered a fully operational MVP backed by a reproducible engineering workflow: automated quality gates on every push and declarative local K8s orchestration.",
+    architecture: "Decoupled cloud-ready architecture. The Java backend and React frontend are completely isolated and communicate over REST/JSON. In development, the lifecycle is managed via Docker Compose. For the staging baseline, manifests deploy the components into a local Kubernetes (Minikube) cluster featuring specialized Pods, Services, and native configuration secrets.",
     solution: [
-      "Secure REST API with Spring Boot & Java 17",
-      "Whitelist-based security for professional email validation",
-      "Decoupled PostgreSQL schema for staff & assistant isolation",
-      "Upcoming: Interactive Map integration, Dockerization and automated tests"
+      "Public directory of social aid resources with multi-criteria filtering (city, category tags)",
+      "Authenticated CRUD operations for associations and resource maintenance",
+      "Multi-stage Docker optimization separating build environments from lightweight runtimes",
+      "Local Kubernetes orchestration (Minikube) leveraging declarative Deployments and Services",
+      "Decoupled configuration management via Kubernetes Secrets",
+      "Automated CI pipeline with GitHub Actions executing backend unit tests on every push",
+      "Planned IaC roadmap: Terraform provisioned AWS EKS/RDS infrastructure with Ansible configuration"
     ],
     images: [
       {
-        url: "/project/red-cross/archi-red-cross.webp",
-        caption: "System Architecture: A high-level view of the secure Spring Boot backend, highlighting the dual-authentication strategy and data isolation layer designed for sensitive personnel mapping.",
-        isArchitecture: true 
-      }, 
-      {
-        url: "/project/red-cross/endpoint-test.webp",
-        caption: "Functional API Validation: Demonstrating real-time REST endpoint responses with Postman, featuring advanced filtering for geolocated personnel and standardized JSON data structures."
+        url: "/project/solidarity-app/solidarity-app-diagram.webp",
+        caption: "System Architecture: Local Kubernetes orchestration baseline (Minikube) and automated GitHub Actions CI pipeline with an explicit cloud-native AWS migration path.",
+        isArchitecture: true
       },
-      { 
-        url: "/project/red-cross/security-conf.webp", 
-        caption: "Security-First Implementation: A look at the Spring Security configuration, showing explicit request matching and the strict isolation between public search routes and protected staff areas."
+      {
+        url: "/project/solidarity-app/main-interface.webp",
+        caption: "Authenticated Management: Mobile-first responsive dashboard allowing verified users to update active social resources."
+      },
+      {
+        url: "/project/solidarity-app/solidarity-db.webp",
+        caption: "Relational Schema: PostgreSQL data model optimized for tag-based queries and local persistent tracking."
+      },
+      {
+        url: "/project/solidarity-app/solidarity-api-request.webp",
+        caption: "Functional API Validation: testing the decoupled REST API with Postman, showcasing the standardized JSON response schema for the public associations directory (200 OK)."
       }
     ],
     technicalDeepDive: {
-      database: "Engineered a decoupled data model using PostgreSQL. By strictly isolating Family Assistants and Administrative Staff entities, data integrity is ensured and the system is prepared for scalable role-based access control (RBAC).",
-      security: "Implementing a strict access policy: Family Assistants have read-only access verified against a professional email whitelist, while management staff holds CRUD permissions via JWT-backed authentication.",
-      backend: "Standardizing data exchange using DTO (Data Transfer Objects) patterns to decouple the persistence layer from the API layer, ensuring long-term maintainability and secure data exposure.",
-      devops: "Preparing a CI/CD workflow using GitHub Actions to automate JUnit/Mockito testing and Docker image builds upon every push to ensure industrial-grade deployment standards."
-    }
-  }, 
+      backend: "REST API built with Spring Boot 3 using the Controller-Service-Repository pattern. Features decoupled DTO contracts and interactive OpenAPI/Swagger documentation for rapid frontend consumption.",
+      database: "PostgreSQL relational instance initialized via automated seed SQL scripts, prepared for abstraction to cloud-managed databases.",
+      security: "Current access validation occurs at the client level. Backend roadmap includes implementing a stateless JWT layer using Spring Security for role-based endpoint protection (RBAC).",
+      infrastructure: "Engineered multi-container environments via Docker Compose for immediate local execution. Extended infrastructure complexity by writing declarative manifests for localized Kubernetes deployment.",
+      devops: "Configured a GitHub Actions workflow acting as an automated quality gate running JUnit/Mockito tests. Implemented Kubernetes Secrets for decoupling database credentials from core application logic.",
+      ux: "TailwindCSS layout built with a strict mobile-first constraint to accommodate emergency access conditions on low-end networks or devices."
+    },
+    releaseStrategy: {
+      status: "MVP Deployed Locally - active DevOps pipeline expansion",
+      testing: "Core business logic protected via backend unit test suites embedded inside the continuous integration pipeline to prevent functional regression.",
+      storeCompliance: "Cloud infrastructure strategy - upcoming transition to Terraform for Infrastructure as Code, Ansible for node configuration, and deployment onto AWS."
+    },
+    githubUrl: "https://github.com/megumihfu/solidarity-app"
+  },
   {
     id: "ai-job-search-agent",
     title: "AI-Powered Job Search Agent",
